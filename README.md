@@ -53,5 +53,5 @@ npm run dev
 ```
 For backend setup, see /backend directory and set your environment variables.
 
-# 📄 License
+## 📄 License
 MIT
