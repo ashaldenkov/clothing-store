@@ -96,6 +96,7 @@ const ShopContextProvider = (props) => {
       return;
     }
     addToCartMutation.mutate({ itemId, size });
+    toast.success("Product successfullt added to cart!");
   };
 
   // Update cart item quantity

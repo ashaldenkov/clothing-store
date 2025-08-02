@@ -90,7 +90,7 @@ const Login = () => {
             <Input 
               {...field} 
               ref={ref}
-              className='w-full h-12 text-md' 
+              className='w-full h-12 !text-lg' 
               placeholder='Enter your email'                  
             />
           )}
@@ -108,7 +108,7 @@ const Login = () => {
               {...field} 
               ref={ref}
               type={showPassword ? 'text' : 'password'}
-              className='w-full h-12 peer' 
+              className='w-full h-12 !text-lg' 
               placeholder='Password'                  
             />
           )}
@@ -116,7 +116,7 @@ const Login = () => {
         {
         password && <img src={assets.eyeIcon} alt='' 
           onMouseDown={()=>setShowPassword(!showPassword)}
-          className={`absolute right-4 peer-focus:right-12 top-[12px] transistion-all duration-100
+          className={`absolute right-4 top-[12px] transistion-all duration-100
             ${showPassword ? 'opacity-100' : 'opacity-50'} hover:opacity-100 cursor-pointer`}
         />
         }

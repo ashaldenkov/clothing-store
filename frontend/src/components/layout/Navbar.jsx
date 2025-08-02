@@ -8,11 +8,12 @@ import { toast } from 'sonner'
 const Navbar = () => {
 
 const [visible, setVisible] = useState(false)
-const { showSearch, setShowSearch, getCartCount, navigate, token, setToken } = useContext(ShopContext)
+const { showSearch, setShowSearch, getCartCount, navigate, token, setToken, setCartItems } = useContext(ShopContext)
     
 const logout = () => {
     localStorage.removeItem('token')
     setToken(null)
+    setCartItems({})
     navigate('/')  
     toast.success("Succesfully logged out") 
 }
