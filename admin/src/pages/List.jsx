@@ -25,14 +25,16 @@ const List = ({token}) => {
   const removeProduct = async (id) => {
     try {
       
-      const response = await axios.post(backendUrl + '/api/product/remove', {id}, {headers: {token}})
+      // const response = await axios.post(backendUrl + '/api/product/remove', {id}, {headers: {token}})
 
-      if (response.data.success) {
-        toast.success(response.data.message)
-        await fetchList();
-      } else {
-        toast.error(response.data.message)
-      }
+      toast.info('This is a REAL admin feature. If you want to try functionality - add some products')
+
+      // if (response.data.success) {
+      //   toast.success(response.data.message)
+      //   await fetchList();
+      // } else {
+      //   toast.error(response.data.message)
+      // }
       
     } catch (error) {
       console.log(error)
@@ -72,7 +74,7 @@ const List = ({token}) => {
             <p>{item.name}</p>
             <p>{item.category}</p>
             <p>{currency}{item.price}</p>
-            <button className='border rounded-sm cursor-pointer m-auto px-4 py-2  transistion-all duration-150 bg-red-50 hover:bg-red-100 hover:text-black'
+            <button className='border rounded-sm cursor-help m-auto px-4 py-2  transistion-all duration-150 bg-red-50 hover:bg-red-100 hover:text-black'
             onClick={()=>removeProduct(item._id)}>
               Remove item
             </button>
