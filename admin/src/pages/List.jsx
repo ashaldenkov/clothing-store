@@ -72,7 +72,7 @@ const List = ({token}) => {
             <p>{item.name}</p>
             <p>{item.category}</p>
             <p>{currency}{item.price}</p>
-            <button className='border rounded-sm cursor-pointer m-auto px-2 transistion-all duration-150 hover:bg-gray-100 hover:text-black'
+            <button className='border rounded-sm cursor-pointer m-auto px-4 py-2  transistion-all duration-150 bg-red-50 hover:bg-red-100 hover:text-black'
             onClick={()=>removeProduct(item._id)}>
               Remove item
             </button>
