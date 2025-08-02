@@ -2,14 +2,27 @@ import React, { useContext, useMemo } from "react";
 import { ShopContext } from "@/context/ShopContext";
 import Title from "@/components/Title";
 import ProductItem from "@/features/shared/ProductItem";
-import { CollectionSkeleton } from "../collection/CollectionSkeleton";
 import LoadingSkeletons from "./LoadingSkeletons";
+import useWindowSize from '@/lib/useWindowSize'
 
 const LatestCollection = () => {
-  const { products = [], isLoading } = useContext(ShopContext); // make sure it is array
+  const { products = [], isLoading } = useContext(ShopContext);
+  const { width } = useWindowSize()
 
-  // useMemo to avoid rerenders
-  const latestProducts = useMemo(() => products.slice(0, 8), [products]);
+  // useMemo to calculate product count based on screen size and slice products
+  const latestProducts = useMemo(() => {
+    let itemCount;
+    
+    if (width >= 1024) {        // lg - large screens  
+      itemCount = 10;
+    } else if (width >= 768) {  // md - medium screens
+      itemCount = 8;
+    } else {                    // sm - small screens
+      itemCount = 6;
+    }
+    
+    return products.slice(0, itemCount);
+  }, [products, width]);
 
   return (
     <div className="my-10">

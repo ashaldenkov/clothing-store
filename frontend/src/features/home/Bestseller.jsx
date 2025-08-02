@@ -3,16 +3,28 @@ import { ShopContext } from '@/context/ShopContext'
 import Title from '@/components/Title'
 import ProductItem from '@/features/shared/ProductItem'
 import LoadingSkeletons from './LoadingSkeletons'
+import useWindowSize from '@/lib/useWindowSize'
 
 const Bestseller = () => {
 
   const { products = [], isLoading } = useContext(ShopContext); // make sure it is array
     const [ bestSeller, setBestSeller ] = useState([])
+    const { width } = useWindowSize()
 
     useEffect(() => {
         const bestProduct = products.filter((item) => (item.bestseller));
-        setBestSeller(bestProduct.slice(0,8))
-    }, [products])
+        
+        let itemCount;
+        if (width >= 1024) { 
+            itemCount = 10;
+        } else if (width >= 768) {
+            itemCount = 8;
+        } else {                  
+            itemCount = 6;
+        }
+        
+        setBestSeller(bestProduct.slice(0, itemCount))
+    }, [products, width])
 
   return (
     <div className='my-10'>
