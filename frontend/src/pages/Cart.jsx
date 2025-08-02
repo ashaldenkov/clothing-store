@@ -60,12 +60,13 @@ const Cart = () => {
           cartData.map((item, index) => {
             const productData = products.find((product) =>  product._id === item.id)
             return (
-              <div key={index} className='py-4 border-t last:border-y text-gray-700 grid grid-cols-[3fr_2fr_0.5fr_0.5fr] sm:grid-cols-[3fr_2fr_0.5fr_0.5fr] items-center gap-4'>
-                <div className='flex items-start gap-6'>
-                  <img className='w-20 sm:w-30 aspect-square object-cover' src={productData.image[0]} alt=''/>
-                  <div className='flex flex-col justify-between h-full'>
-                    <p className='text-xs sm:text-lg font-medium'>{productData.name}</p>
-                    <div className='w-fit px-2 sm:py-1 border bg-slate-50'>
+              <div key={index} className='py-4 border-t last:border-y text-gray-700 
+              grid grid-cols-[3fr_2fr_0.5fr_0.5fr] sm:grid-cols-[3fr_2fr_0.5fr_0.5fr] max-sm:flex flex-col items-center gap-4'>
+                <div className='flex items-stretch gap-6'>
+                  <img className='block w-full max-w-[390px] sm:w-40 aspect-square object-cover' src={productData.image[0]} alt=''/>
+                  <div className='hidden sm:flex flex-col'>
+                    <a href={`/product/${productData._id}`} className='text-xs sm:text-lg font-medium'>{productData.name}</a>
+                    <div className='w-fit mt-3 px-2 sm:py-1 border bg-slate-50'>
                       {item.size}
                     </div>
                   </div>
@@ -76,9 +77,9 @@ const Cart = () => {
                   null : 
                   updateQuantity(item.id, item.size, Number(e.target.value))
                 }
-                className='border ml-auto max-w-10 sm:max-w-20 p-1 sm:px-2'/>
+                className='hidden sm:block border ml-auto max-w-10 sm:max-w-20 p-1 sm:px-2'/>
                 <NumberFlow
-                    className='w-fit mx-auto'
+                    className='hidden sm:block w-fit mx-auto'
                     value={productData.price * item.quantity} 
                     format={{ 
                         style: 'currency', 
@@ -87,7 +88,38 @@ const Cart = () => {
                     }} 
                 />
                 <img src={assets.deleteIcon} onClick={()=>updateQuantity(item.id, item.size, 0)} alt='' 
-                className='w-4 mx-auto sm:w-5 cursor-pointer hover:fill-white hover:scale-110 transistion-all duration-300'/>
+                  className='hidden sm:block w-4 h-4 mx-auto sm:w-5 cursor-pointer hover:fill-white hover:scale-110 transistion-all duration-300'/>
+
+                {/* mobile */}
+                <div className='sm:hidden w-full'>
+                  <a href={`/product/${productData._id}`} className='max-w-[390px] mx-auto block text-lg text-center font-medium'>{productData.name}</a>
+                  <div className='max-w-[390px] mx-auto flex justify-between items-center'>
+                    <input type='number' min={1} value={item.quantity} 
+                    onChange={(e)=> 
+                      e.target.value === '' || e.target.value === '0' ? 
+                      null : 
+                      updateQuantity(item.id, item.size, Number(e.target.value))
+                    }
+                    className='border max-w-10 sm:max-w-20 p-1 sm:px-2'
+                    />
+                    <div className='py-1 px-2 border bg-slate-50'>
+                      {item.size}
+                    </div>
+                    <NumberFlow
+                        className='w-fit'
+                        value={productData.price * item.quantity} 
+                        format={{ 
+                            style: 'currency', 
+                            currency: 'USD', 
+                            maximumFractionDigits: 2 
+                        }} 
+                    />
+                    <img src={assets.deleteIcon} onClick={()=>updateQuantity(item.id, item.size, 0)} alt='' 
+                      className='justify-self-end w-4 h-4 sm:w-5 cursor-pointer hover:fill-white hover:scale-110 transistion-all duration-300'
+                    />
+                  </div>
+
+                </div>
               </div>
             )
           })
