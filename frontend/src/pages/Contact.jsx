@@ -16,7 +16,7 @@ const Contact = () => {
       {/* Contact Info Section */}
       <div className='my-10 flex flex-col md:justify-evenly md:flex-row gap-10 mb-28'>
         {/* Contact Image */}
-        <img className='w-full md:max-w-[480px]' src={assets.contactImg} alt='contact' fetchpriority='high' />
+        <img className='w-full md:max-w-[480px]' src={assets.contactImg} alt='contact' rel="preload" fetchpriority='high' />
         
         {/* Contact Details */}
         <div className='flex flex-col justify-center items-start gap-6'>
