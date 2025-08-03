@@ -1,6 +1,6 @@
-# Clothing Store – MERN Fullstack E-commerce SPA
+# Fashion Store – MERN Fullstack E-commerce SPA
 
-A full-stack MERN web application for a modern clothing store with a responsive design, smooth animations, and both admin and customer portals. Features secure authentication, Stripe payments, and advanced product filtering.
+A full-stack MERN web application for a modern fasion store with a responsive design, smooth animations, and both admin and customer portals. Features secure authentication, Stripe payments, and product filtering.
 
 ## 🌐 Live Demo
 
@@ -11,10 +11,10 @@ A full-stack MERN web application for a modern clothing store with a responsive 
 
 ## 📦 Tech Stack
 
-- **Frontend**: React, Vite, TailwindCSS, ShadCN UI, React Hook Form, Zod
-- **Backend**: Node.js, Express, MongoDB, Mongoose
+- **Frontend**: React(Pages Router), Vite, TailwindCSS, ShadCN, React Hook Form, Zod
+- **Backend**: Node.js, Express, MongoDB, Mongoose, Cloudinary
 - **Payments**: Stripe integration
-- **Auth & State**: JWT-based Auth, React Query, localStorage
+- **Auth & State**: JWT-based Auth, React Query, ContextAPI
 - **Deployment**: Vercel
 
 ## ✨ Features
@@ -37,7 +37,7 @@ A full-stack MERN web application for a modern clothing store with a responsive 
 
 ## 📋 Forms & Validation
 - Built with React Hook Form and Zod
-- Robust client-side validation
+- Robust client&server-side validation
 
 ## 💸 Payments
 - Seamless checkout using Stripe
@@ -46,8 +46,8 @@ A full-stack MERN web application for a modern clothing store with a responsive 
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/your-username/e-commerce-website.git
-cd e-commerce-website/frontend
+git clone https://github.com/your-username/fashion-store.git
+cd fashion-store/frontend
 npm install
 npm run dev
 ```
